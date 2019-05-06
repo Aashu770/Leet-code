@@ -12,10 +12,9 @@ class Solution(object):
         :type t2: TreeNode
         :rtype: TreeNode
         """
-        if not t1 and not t2:
-            return None
-        output = TreeNode((t1.val if t1 else 0)+(t2.val if t2 else 0))  #Nodes are added here
-        output.left = self.mergeTrees(t1 and t1.left , t2 and t2.left)  #the left node of t1 and left node of t2 are added here by recursive
-        output.right = self.mergeTrees(t1 and t1.right , t2 and t2.right)  #the right node of t1 and right node of t2 are added here by recursive
+        if t1 and t2:
+            t1.val += t2.val                                         #Nodes are added here 
+            t1.left = self.mergeTrees(t1.left, t2.left)             #the left node of t1 and left node of t2 are added here by recursive
+            t1.right = self.mergeTrees(t1.right, t2.right)           #the right node of t1 and right node of t2 are added here by recursive
     
         return output
